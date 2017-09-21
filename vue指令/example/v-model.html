@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model实例</h1>
+    <hr>
+    <div id="app">
+        <p>原始文本信息{{message}}</p>
+        <h3>文本框</h3>
+        <p><input type="text" v-model="message"></p>
+        <p><input type="text" v-model.lazy="message"></p>
+        <p><input type="text" v-model.number="message"></p>
+        <p><input type="text" v-model.trim="message"></p>
+        <h3>文本域的双向数据绑定</h3>
+        <textarea cols="30" rows="10" v-model="message"></textarea>
+        <h3>多选框绑定一个值</h3>
+        <input type="checkbox" id="isTrue" v-model="isTrue"/>
+        <label for="isTrue">{{isTrue}}</label>
+        <hr>
+        <p>
+            <input type="checkbox" id="yellow" value="yellow" v-model="web_Names">
+            <label for="s">yellow</label><br/>
+            <input type="checkbox" id="blue" value="green" v-model="web_Names">
+            <label for="s">green</label><br/>
+            <input type="checkbox" id="green" value="blue" v-model="web_Names">
+            <label for="s">blue</label>
+            <p>{{web_Names}}</p>
+        </p>
+        <h3>单选按钮绑定</h3>
+        <input type="radio" id="one" value="男" v-model="sex">
+        <label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="sex">
+        <label for="one">女</label>
+        <p>{{sex}}</p>        
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'Hellow World111',
+                isTrue:true,
+                web_Names:[],
+                sex:'男'
+            }
+        })
+    </script>
+</body>
+</html>

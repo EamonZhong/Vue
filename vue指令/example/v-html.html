@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <!-- 在实际的开发中尽量少用v-html容易造成安全问题 -->
+    <h1>v-text & v-html</h1>
+    <hr>
+    <div id="app">{{message}}
+        <span v-text="message"></span>
+        <span v-html="dodo"></span>
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'Hellow World111',
+                dodo:'<h2>hello</h2>'
+            }
+        })
+    </script>
+</body>
+</html>
