@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.directive 自定义指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-changegreen="color">{{num}}</div>
+        <button @click="add">ADD</button>
+        <button onclick="unbind">解绑</button>
+    </div>
+    <script type="text/javascript">
+        function unbind(){
+            app.destroy();
+        }
+        Vue.directive('changegreen',function(el,binding){
+            el.style="color:"+binding.value          
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:10,
+                color:'red'
+            },
+            methods:{
+                add:function(){
+                    this.num++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

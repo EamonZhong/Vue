@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        
+        .classA { 
+            color: red;
+        }
+        .classB {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-bind</h1>
+    <hr>
+    <div id="app">
+        <img v-bind:src="imgSrc" width="200px"/>
+        <p><a :href="webURL" target="_blank">Eamon</a></p>
+        <div :class="cName">1.绑定Class</div>
+        <div :class="{classA:isOK}">2.绑定Class中的判断</div>
+        <div :class="[classA,classB]">3.绑定Class中的数组</div>
+        <div :class="isOk?classA:classB">4.绑定三元运算符</div>
+        <hr>
+        <div>
+            <input type="checkbox" id="isOk" v-model="isOk"/>
+            <label for="isOk">isok={{isOk}}</label>
+        </div>
+        <div :style="{color:red,fontSize:font}">5.绑定style的值</div>
+        <div :style="styleObject">5.绑定style的值</div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgSrc:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1506058902589&di=34e3df26778193d70e63a79b3dd7eea3&imgtype=0&src=http%3A%2F%2Fimg.52jbj.com%2Fd%2Ffile%2F170119%2F1-eqc3jdt4txu.jpg',
+                webURL:'www.baidu.com',
+                cName:'classA',
+                isOk:true,
+                classA:'classA',
+                classB:'classB',
+                red:'red',
+                font:'20px',
+                styleObject:{
+                    color:'green',
+                    fontSize:'20px'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
