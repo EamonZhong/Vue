@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.set全局</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.set</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">按钮</button></p>
+    <script type="text/javascript">
+    // 在外部引用数据
+    function add(){
+        /* VUE无法监控到下标的变化 */
+        //Vue.set(outData,'count',2)
+        //app.count++;
+        //outData.count++;
+        //app.arr[1]='ddd';
+        /* Vue.set的作用能够外侧检测到数值的变化 */
+        Vue.set(app.arr,1,'dd')
+    }
+    var outData = {
+        count:1,
+        //goods:'car'
+        arr:['aaa','bbb','ccc']
+    }
+        var app = new Vue({
+            el:"#app",
+            data:outData
+        })
+    </script>
+</body>
+</html>

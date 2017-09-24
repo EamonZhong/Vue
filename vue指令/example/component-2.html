@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1</h1>
+    <hr>
+    <div id="app">
+        <happy></happy>
+        <sohappy :from-here="message"></sohappy>
+    </div>
+    <script type="text/javascript">
+       /* 虽然说是全局的组建。也要挂在app中 */
+        Vue.component('happy',{
+            template:`<div style="color:red">我是全局的happy组件</div>`
+        })    
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'Qingdao'
+            },
+            components:{
+                "sohappy":{
+                    template:`<div style="color:red">I am from {{fromHere}}</div>`,
+                    props:['fromHere']
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
