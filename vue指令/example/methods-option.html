@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HellowWorld</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>HellowWorld</h1>
+    <hr>
+    <div id="app">
+        <p>{{a}}</p>
+        <button @click="add(4,$event)">add</button>
+        <!-- 调用构造器中的原始方法 -->
+        <p><but @click.native="add(2)"></but></p>
+    </div>
+    <button onclick="app.add(4)">外部调用++</button>
+    <script type="text/javascript">
+        var but = {
+            template:`<button>组件add</button>`,
+        }
+        var app = new Vue({
+            el:"#app",
+            data:{
+                a:1
+            },
+            components:{
+                "but":but
+            },
+            methods:{
+                add:function(num,event){
+                    if(num != null){
+                        this.a+=num;
+                    }else{
+                        this.a++;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
