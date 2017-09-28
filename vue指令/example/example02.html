@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"> </script>
+</head>
+<body>
+    <h1>example methods Demo</h1>
+    <hr>
+    <div id="app"></div>
+    <button onclick="destroy()">卸载</button>
+    <button onclick="reload()">刷新</button>
+    <button onclick="tick()">更改数据</button>
+    <script type="text/javascript">
+        var eamon = Vue.extend({
+            template:`<p>{{message}}</p>`,
+            data:function(){
+                return {
+                    message:"hello I am eamon"
+                }
+            },
+            mounted:function(){
+                console.log("mounted被创建")
+            },
+            destroyed:function(){
+                console.log("销毁之后")
+            },
+            updated:function(){
+                console.log("被更新了")
+            }
+        })
+        var vm = new eamon().$mount('#app');
+        function destroy(){
+            vm.$destroy();
+        }
+        function reload(){
+            vm.$forceUpdate();
+        }   
+        function tick(){
+            vm.message="update message info ";
+            vm.$nextTick(function(){
+                console.log('message更新完后我被调用了');
+            })
+        }
+    </script>
+</body>
+</html>
