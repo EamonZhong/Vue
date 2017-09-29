@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example methods Demo</h1>
+    <hr>
+    <div id="app">
+        <eamon>
+            <span slot="urlinfo">{{eamon.urlinfo}}</span>
+            <span slot="netName">{{eamon.netname}}</span>
+            <span slot="skill">{{eamon.skill}}</span>
+        </eamon>
+    </div>
+    <template id="tep">
+        <div>
+            <p>博客地址：<slot name="urlinfo"></slot></p>
+            <p>网名：<slot name="netName"></slot></p>
+            <p>所会技术：<slot name="skill"></slot></p>
+        </div>       
+    </template>
+    <script type="text/javascript">
+        var eamon = {
+            template:"#tep"
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                eamon:{
+                    urlinfo:"www.baidu.com",
+                    netname:'EamonZhong',
+                    skill:'web'
+                }
+            },
+            components:{
+                'eamon':eamon
+            }
+        })
+    
+    </script>
+</body>
+</html>
