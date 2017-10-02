@@ -1,14 +1,9 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <div>
-      <router-link to="/">首页</router-link>
-      <router-link to="/hi">Hi页面</router-link>
-      <router-link :to="{name:'hi1',params:{username:'eamon',id:888}}">hi1页面</router-link>
-      <router-link :to="{name:'hi2'}">hi2页面</router-link>
-    </div>
-    <p>{{$route.name}}</p>
     <router-view></router-view>
+    <router-view name="left" style="float:left;width:50%;height:300px;background:#ccc"></router-view>
+    <router-view name="right" style="float:left;width:50%;height:300px;background:#c0c"></router-view>
   </div>
 </template>
 
