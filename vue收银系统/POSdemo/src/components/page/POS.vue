@@ -85,15 +85,14 @@
               </ul>
             </el-tab-pane>
           </el-tabs>
-        </div>
-
+       </div>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import {getOftenFood,getTypeGoods} from '../../api/api.js'
 export default {
   name: 'pos',
   data() {
@@ -113,19 +112,17 @@ export default {
     document.getElementById('order-list').style.height = orderHeight + 'px';
   },
   created() {
-    axios.get('http://jspang.com/DemoApi/oftenGoods.php')
+      getOftenFood()
       .then(response => {
-        console.log(response);
         this.oftenGoods = response.data;
       })
       .catch(error => {
         console.log(error);
         alert('网络错误，不能访问');
       })
-    axios.get('http://jspang.com/DemoApi/typeGoods.php')
+    getTypeGoods()
       .then(response => {
         console.log(response);
-        //this.oftenGoods=response.data;
         this.type0Goods = response.data[0];
         this.type1Goods = response.data[1];
         this.type2Goods = response.data[2];

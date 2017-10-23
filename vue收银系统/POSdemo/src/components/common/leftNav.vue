@@ -1,13 +1,13 @@
 <template>
   <div class="left-nav">
     <ul>
-      <li>
+      <li @click="routetohome">
+        <i class="icon iconfont icon-dianpu"></i>
+        <div>首页</div>
+      </li>
+      <li @click="routetomain">
         <i class="icon iconfont icon-goumai"></i>
         <div>收银</div>
-      </li>
-      <li>
-        <i class="icon iconfont icon-dianpu"></i>
-        <div>店铺</div>
       </li>
       <li>
         <i class="icon iconfont icon-hanbao"></i>
@@ -30,7 +30,14 @@
 </template>
 <script>
 export default {
-
+  methods:{
+    routetohome(){
+      this.$router.push({ path: '/home' });
+    },
+    routetomain(){
+      this.$router.push({ path: '/pos' });
+    }
+  }
 }
 </script>
 <style>
@@ -57,5 +64,6 @@ export default {
   text-align: center;
   border-bottom: 1px solid #20a0ff;
   padding: 10px;
+  cursor: pointer;
 }
 </style>
